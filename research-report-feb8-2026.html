@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Research Report: Can's GitHub Repositories</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            line-height: 1.6;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .container {
+            background: white;
+            padding: 40px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; border-bottom: 3px solid #3498db; padding-bottom: 10px; }
+        h2 { color: #34495e; margin-top: 30px; border-bottom: 2px solid #ecf0f1; padding-bottom: 8px; }
+        h3 { color: #7f8c8d; }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th { background: #3498db; color: white; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        code {
+            background: #f4f4f4;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 5px;
+            overflow-x: auto;
+        }
+        .status-complete { color: #27ae60; font-weight: bold; }
+        .status-progress { color: #f39c12; font-weight: bold; }
+        .recommendation { background: #e8f6f3; border-left: 4px solid #1abc9c; padding: 15px; margin: 20px 0; }
+        .warning { background: #fef5e7; border-left: 4px solid #f39c12; padding: 15px; margin: 20px 0; }
+        .toc { background: #f8f9fa; padding: 20px; border-radius: 5px; margin: 20px 0; }
+        .toc ul { list-style-type: none; padding-left: 0; }
+        .toc li { padding: 5px 0; }
+        .toc a { color: #3498db; text-decoration: none; }
+        .toc a:hover { text-decoration: underline; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🔬 Deep Research Report: Can's GitHub Repositories</h1>
+        
+        <p><strong>Date:</strong> February 8, 2026<br>
+        <strong>Status:</strong> <span class="status-complete">✅ COMPLETE</span> (All 9 topics)<br>
+        <strong>Researcher:</strong> Garmin 🦦</p>
+
+        <div class="toc">
+            <h3>📑 Table of Contents</h3>
+            <ul>
+                <li><a href="#executive-summary">Executive Summary</a></li>
+                <li><a href="#part1">Part 1: DataDashboardNew</a>
+                    <ul>
+                        <li><a href="#streamlit">Streamlit Production Deployment</a></li>
+                        <li><a href="#sqlalchemy">SQLAlchemy Connection Pooling</a></li>
+                        <li><a href="#migration">MS Access → PostgreSQL Migration</a></li>
+                        <li><a href="#docker">Docker Containerization</a></li>
+                    </ul>
+                </li>
+                <li><a href="#part2">Part 2: viys-yedek</a>
+                    <ul>
+                        <li><a href="#realtime">Real-time Dashboard Updates</a></li>
+                        <li><a href="#dexie">Dexie.js Sync Patterns</a></li>
+                        <li><a href="#pwa">React PWA / Service Worker</a></li>
+                        <li><a href="#siebel">Oracle Siebel API Integration</a></li>
+                        <li><a href="#validation">Form Validation (Zod)</a></li>
+                    </ul>
+                </li>
+                <li><a href="#roadmap">Implementation Roadmap</a></li>
+            </ul>
+        </div>
+
+        <h2 id="executive-summary">🎯 Executive Summary</h2>
+        
+        <p>This report contains deep research on improving two repositories for <strong>İBB ALO 153</strong>:</p>
+        
+        <table>
+            <tr>
+                <th>Repository</th>
+                <th>Tech Stack</th>
+                <th>Purpose</th>
+            </tr>
+            <tr>
+                <td><strong>DataDashboardNew</strong></td>
+                <td>Python/Streamlit + MS Access</td>
+                <td>KPI dashboard for call center metrics</td>
+            </tr>
+            <tr>
+                <td><strong>viys-yedek</strong></td>
+                <td>React/TypeScript</td>
+                <td>Backup CRM for Oracle Siebel downtime</td>
+            </tr>
+        </table>
+
+        <div class="recommendation">
+            <strong>💡 Top Recommendation:</strong> Migrate DataDashboardNew from MS Access to PostgreSQL immediately. MS Access cannot handle concurrent web connections reliably.
+        </div>
+
+        <h2 id="part1">📊 PART 1: DataDashboardNew Research</h2>
+
+        <h3 id="streamlit">1.1 Streamlit Production Deployment</h3>
+        
+        <div class="warning">
+            <strong>⚠️ Important:</strong> Streamlit 1.10.0+ apps <strong>CANNOT</strong> run from root directory. Must use subdirectory (e.g., <code>/app/</code>).
+        </div>
+
+        <h4>Deployment Options</h4>
+        <table>
+            <tr>
+                <th>Option</th>
+                <th>Best For</th>
+                <th>Status</th>
+            </tr>
+            <tr>
+                <td>Streamlit Community Cloud</td>
+                <td>Prototyping</td>
+                <td>❌ Not recommended for İBB</td>
+            </tr>
+            <tr>
+                <td><strong>Docker + GCP Cloud Run</strong></td>
+                <td>Enterprise/Government</td>
+                <td>✅ <strong>RECOMMENDED</strong></td>
+            </tr>
+            <tr>
+                <td>AWS ECS/EKS</td>
+                <td>Large scale</td>
+                <td>⚡ Overkill for this use case</td>
+            </tr>
+        </table>
+
+        <h4>Production config.toml</h4>
+        <pre><code>[client]
+showErrorDetails = false
+toolbarMode = "auto"
+
+[server]
+port = 8501
+maxUploadSize = 200
+maxMessageSize = 200
+enableCORS = false
+enableXsrfProtection = true
+
+[logger]
+level = "info"</code></pre>
+
+        <h3 id="sqlalchemy">1.2 SQLAlchemy Connection Pooling</h3>
+        
+        <div class="warning">
+            <strong>🔴 Critical Finding:</strong> MS Access does NOT support true connection pooling. The pyodbc driver has known issues with concurrent access. PostgreSQL migration is <strong>essential</strong>.
+        </div>
+
+        <h4>Temporary MS Access Setup</h4>
+        <pre><code>from sqlalchemy import create_engine
+from sqlalchemy.pool import QueuePool
+
+engine = create_engine(
+    "access+pyodbc://driver={Microsoft Access Driver (*.mdb, *.accdb)};DBQ=/path/to/db.accdb",
+    poolclass=QueuePool,
+    pool_size=5,
+    max_overflow=10,
+    pool_recycle=3600,
+    pool_pre_ping=True
+)</code></pre>
+
+        <h4>Recommended PostgreSQL Setup</h4>
+        <pre><code>engine = create_engine(
+    "postgresql+psycopg2://user:pass@localhost/db",
+    pool_size=20,
+    max_overflow=30,
+    pool_recycle=3600,
+    pool_pre_ping=True
+)</code></pre>
+
+        <h3 id="migration">1.3 MS Access → PostgreSQL Migration</h3>
+        
+        <h4>Migration Tools</h4>
+        <table>
+            <tr>
+                <th>Tool</th>
+                <th>Type</th>
+                <th>Best For</th>
+            </tr>
+            <tr>
+                <td>ESF Database Migration Toolkit</td>
+                <td>GUI Wizard</td>
+                <td>Large databases, complex schemas</td>
+            </tr>
+            <tr>
+                <td>DBConvert/DBSync</td>
+                <td>GUI + CLI</td>
+                <td>Bidirectional sync</td>
+            </tr>
+            <tr>
+                <td>pgAdmin + ODBC</td>
+                <td>Manual</td>
+                <td>Small databases, free option</td>
+            </tr>
+        </table>
+
+        <h4>Data Type Mapping</h4>
+        <table>
+            <tr><th>MS Access</th><th>PostgreSQL</th></tr>
+            <tr><td>Text</td><td>VARCHAR</td></tr>
+            <tr><td>Memo</td><td>TEXT</td></tr>
+            <tr><td>Number (Long)</td><td>INTEGER</td></tr>
+            <tr><td>Date/Time</td><td>TIMESTAMP</td></tr>
+            <tr><td>Currency</td><td>NUMERIC(19,4)</td></tr>
+            <tr><td>AutoNumber</td><td>SERIAL</td></tr>
+        </table>
+
+        <h3 id="docker">1.4 Docker Containerization</h3>
+        
+        <h4>Production Dockerfile</h4>
+        <pre><code>FROM python:3.11-slim
+
+WORKDIR /app
+
+RUN apt-get update && apt-get install -y \
+    build-essential curl git unixodbc-dev \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+COPY . .
+
+# Create non-root user
+RUN useradd -m -u 1000 appuser && chown -R appuser:appuser /app
+USER appuser
+
+EXPOSE 8501
+
+HEALTHCHECK --interval=30s --timeout=10s --retries=3 \
+    CMD curl --fail http://localhost:8501/_stcore/health || exit 1
+
+ENTRYPOINT ["streamlit", "run", "streamlit_app.py", \
+    "--server.port=8501", \
+    "--server.address=0.0.0.0", \
+    "--server.enableCORS=false", \
+    "--server.enableXsrfProtection=true"]</code></pre>
+
+        <h2 id="part2">🔧 PART 2: viys-yedek Research</h2>
+
+        <h3 id="realtime">2.1 Real-time Dashboard Updates</h3>
+        
+        <div class="recommendation">
+            <strong>💡 Recommendation:</strong> Use <strong>Server-Sent Events (SSE)</strong> instead of WebSockets for dashboards. Simpler, works behind corporate firewalls, built-in reconnection.
+        </div>
+
+        <h4>Why SSE > WebSockets for Dashboards</h4>
+        <table>
+            <tr><th>Factor</th><th>SSE</th><th>WebSockets</th></tr>
+            <tr><td>Direction</td><td>Server → Client ✅</td><td>Bi-directional</td></tr>
+            <tr><td>Complexity</td><td>Simple (HTTP) ✅</td><td>Complex (ws)</td></tr>
+            <tr><td>Reconnection</td><td>Built-in ✅</td><td>Manual</td></tr>
+            <tr><td>Firewall</td><td>Works everywhere ✅</td><td>Often blocked</td></tr>
+        </table>
+
+        <h4>SSE Implementation</h4>
+        <pre><code># Backend (FastAPI)
+@app.get("/stream/kpis")
+async def stream_kpis():
+    return StreamingResponse(
+        kpi_stream(),
+        media_type="text/event-stream"
+    )
+
+# Frontend (JavaScript)
+const evtSource = new EventSource("/stream/kpis");
+evtSource.addEventListener('message', event => {
+    const kpis = JSON.parse(event.data);
+    updateDashboard(kpis);
+});</code></pre>
+
+        <h3 id="dexie">2.2 Dexie.js Sync Queue Patterns</h3>
+        
+        <h4>Core Pattern: Local-First + Sync Queue</h4>
+        <pre><code>class VIYSDatabase extends Dexie {
+  callRecords!: Table&lt;CallRecord&gt;;
+  syncQueue!: Table&lt;SyncJob&gt;;
+
+  constructor() {
+    super('VIYS_DB');
+    this.version(1).stores({
+      callRecords: '++id, citizenName, synced',
+      syncQueue: '++id, recordId, status, retryCount'
+    });
+  }
+}
+
+// Auto-reactive query
+const records = useLiveQuery(
+  () => db.callRecords.where('synced').equals(0).toArray(),
+  []
+);</code></pre>
+
+        <h4>Background Sync</h4>
+        <pre><code>async function syncWithOracle() {
+  const pendingJobs = await db.syncQueue
+    .where('status').equals('pending')
+    .toArray();
+  
+  for (const job of pendingJobs) {
+    try {
+      const record = await db.callRecords.get(job.recordId);
+      await fetch('/api/siebel/call-records', {
+        method: 'POST',
+        body: JSON.stringify(record)
+      });
+      
+      await db.callRecords.update(record.id, { synced: true });
+      await db.syncQueue.delete(job.id);
+    } catch (error) {
+      await db.syncQueue.update(job.id, {
+        retryCount: job.retryCount + 1
+      });
+    }
+  }
+}
+
+// Run every 30 seconds
+setInterval(syncWithOracle, 30000);</code></pre>
+
+        <h3 id="pwa">2.3 React PWA / Service Worker</h3>
+        
+        <h4>Key Benefits for viys-yedek</h4>
+        <ul>
+            <li><strong>Installable:</strong> Add to home screen like native app</li>
+            <li><strong>Offline Functionality:</strong> Record calls without internet</li>
+            <li><strong>Background Sync:</strong> Auto-sync when connection returns</li>
+        </ul>
+
+        <h4>Service Worker Configuration</h4>
+        <pre><code>// Register in index.tsx
+serviceWorkerRegistration.register({
+  onUpdate: (registration) => {
+    if (window.confirm('New version available. Reload?')) {
+      window.location.reload();
+    }
+  }
+});
+
+// Service Worker with Workbox
+precacheAndRoute(self.__WB_MANIFEST);
+
+// Cache API calls
+registerRoute(
+  ({url}) => url.pathname.startsWith('/api/'),
+  new NetworkFirst({ cacheName: 'api-cache' })
+);
+
+// Background sync
+const bgSyncPlugin = new BackgroundSyncPlugin('call-records-queue', {
+  maxRetentionTime: 24 * 60 // 24 hours
+});</code></pre>
+
+        <h3 id="siebel">2.4 Oracle Siebel API Integration</h3>
+        
+        <h4>TypeScript API Client</h4>
+        <pre><code>class SiebelClient {
+  async createCallRecord(record: CallRecord): Promise&lt;string&gt; {
+    const response = await fetch(
+      `${this.baseUrl}/api/v1/call-records`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${this.authToken}`
+      },
+      body: JSON.stringify({
+        'First Name': record.citizenName.split(' ')[0],
+        'Last Name': record.citizenName.split(' ').slice(1).join(' '),
+        'Phone Number': record.phone,
+        'Request Type': record.requestType,
+        'Source': 'VIYS_Yedek'
+      })
+    });
+    
+    if (!response.ok) {
+      throw new Error(`Siebel API error: ${response.status}`);
+    }
+    
+    const result = await response.json();
+    return result.id;
+  }
+}</code></pre>
+
+        <h3 id="validation">2.5 Form Validation with Zod</h3>
+        
+        <h4>Schema Definition</h4>
+        <pre><code>import { z } from 'zod';
+
+export const callRecordSchema = z.object({
+  citizenName: z.string()
+    .min(2, 'İsim en az 2 karakter olmalı')
+    .max(100, 'İsim çok uzun'),
+  
+  phone: z.string()
+    .regex(/^\+?\d{10,15}$/, 'Geçerli telefon numarası giriniz'),
+  
+  requestType: z.enum(['Şikayet', 'Talep', 'Soru', 'Diğer']),
+  
+  description: z.string()
+    .min(10, 'Açıklama en az 10 karakter olmalı')
+    .max(2000, 'Açıklama çok uzun')
+});
+
+export type CallRecordInput = z.infer&lt;typeof callRecordSchema&gt;;</code></pre>
+
+        <h4>React Hook Form Integration</h4>
+        <pre><code>const { register, handleSubmit, formState: { errors } } = 
+  useForm&lt;CallRecordInput&gt;({
+    resolver: zodResolver(callRecordSchema),
+    mode: 'onBlur'
+  });
+
+// Usage
+&lt;input {...register('citizenName')} /&gt;
+{errors.citizenName && (
+  &lt;span&gt;{errors.citizenName.message}&lt;/span&gt;
+)}</code></pre>
+
+        <h2 id="roadmap">📅 Implementation Roadmap</h2>
+        
+        <h3>Phase 1: Quick Wins (Week 1-2)</h3>
+        <ul>
+            <li>✅ Add SQLAlchemy connection pooling</li>
+            <li>✅ Implement <code>st.cache_data</code> for expensive queries</li>
+            <li>✅ Set up Dexie.js with basic schema</li>
+            <li>✅ Add offline/online status indicator</li>
+        </ul>
+
+        <h3>Phase 2: Core Improvements (Week 3-4)</h3>
+        <ul>
+            <li>🔄 Migrate one MS Access DB to PostgreSQL (pilot)</li>
+            <li>🔄 Implement sync queue pattern</li>
+            <li>🔄 Build Oracle Siebel API client</li>
+            <li>🔄 Add background sync with retries</li>
+        </ul>
+
+        <h3>Phase 3: Production Readiness (Week 5-6)</h3>
+        <ul>
+            <li>🐳 Docker containerization</li>
+            <li>☁️ Deploy to Cloud Run/AWS</li>
+            <li>📊 Set up monitoring/logging</li>
+            <li>📱 Implement PWA features</li>
+        </ul>
+
+        <h3>Phase 4: Optimization (Week 7-8)</h3>
+        <ul>
+            <li>⚡ Performance tuning</li>
+            <li>🔒 Security audit</li>
+            <li>📚 Documentation</li>
+            <li>👥 Staff training</li>
+        </ul>
+
+        <hr>
+        
+        <p><em>Research completed by Garmin 🦦</em><br>
+        <em>Date: February 8, 2026</em><br>
+        <em>Full report: memory/research-report-deep-feb8-2026.md</em></p>
+    </div>
+</body>
+</html>
